@@ -99,3 +99,28 @@ Game.prototype.mergeRight = function() {
   };
 };
 };
+
+Game.prototype.moveDown = function() {
+  this.boardArray = transpose(this.boardArray);
+  this.moveRight();
+  this.boardArray = transpose(this.boardArray);
+};
+
+Game.prototype.mergeDown = function() {
+  this.boardArray = transpose(this.boardArray);
+  this.mergeRight();
+  this.boardArray = transpose(this.boardArray);
+};
+
+Game.prototype.moveUp = function() {
+  this.boardArray = transpose(this.boardArray);
+  this.moveLeft();
+  this.boardArray = transpose(this.boardArray);
+};
+
+Game.prototype.mergeUp = function() {
+  this.boardArray = transpose(this.boardArray);
+  this.mergeLeft();
+  this.boardArray = transpose(this.boardArray);
+};
+
