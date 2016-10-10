@@ -25,3 +25,46 @@ Game.prototype.shuffle = function () {
 Array.prototype.rand = function() {
    return this[~~(Math.random() * this.length)];
 }
+
+Game.prototype.to_i = function() {
+  var i_board = []
+  for(var i = 0; i < this.board.length; i++){
+    i_board.push(parseInt(this.board[i], 10));
+  }
+ return this.board = i_board;
+}
+
+Game.prototype.toString = function () {
+  var board_array = this.board.split("");
+  var nested = []
+  for(var i = 0; i < board_array.length; i++){
+    var sub_array = board_array.splice(0, 4)
+    nested.push(sub_array.join(""));
+  }
+  return nested;
+}
+
+Game.prototype.move = function(direction){
+ var row_array = this.to_i();
+  //var row_array = this.toString();
+  //console.log(row_array)
+  if(direction === "right"){
+    for(var i = 0; i <= 3; i++){
+      var cell = row_array[i];
+      console.log(cell)
+      if(cell > 0){
+        if(cell === row_array[i+1]){
+          row_array[i+1] = cell + row_array[i+1];
+          row_array[i] = 0;
+          console.log(row_array)
+        }
+
+      }
+
+      }
+    }
+    return row_array;
+  }
+
+
+// }
