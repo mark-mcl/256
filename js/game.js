@@ -34,10 +34,10 @@ Game.prototype.mergeRight = function() {
     } else {
       for ( var i= 0; i < row.length; i++) {
         var j = (row.length - 1 - i);
-        if (row[j] === row[j-1]) {
+        if (row[j] === row[j-1] && (j > 0)) {
           row[j-1] = "0";
           row[j] = (parseInt(row[j])*2).toString();
-        } else if (row[j] === "0") {
+        } else if (row[j] === "0" && (j > 0)) {
           row[j] = row[j-1];
           row[j-1] = "0";
         };
