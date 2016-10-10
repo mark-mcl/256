@@ -44,10 +44,10 @@ Game.prototype.mergeLeft = function() {
       row[3] = "0";
     } else {
       for ( var i= 0; i < row.length; i++) {
-        if (row[i] === row[i+1] && (i < row.length)) {
+        if (row[i] === row[i+1] && (i < row.length - 1)) {
           row[i+1] = "0";
           row[i] = (parseInt(row[i])*2).toString();
-        } else if (row[i] === "0" && (i < row.length)) {
+        } else if (row[i] === "0" && (i < row.length - 1)) {
           row[i] = row[i+1];
           row[i+1] = "0";
         };
@@ -69,7 +69,7 @@ Game.prototype.moveRight = function() {
 };
 
 function move_tile_right(row, i) {
-  if (row[i] == "0" && (i != 3)) {
+  if (row[i] == "0" && (i != 0)) {
     return move_tile_right(row, i-1);
   } else {
     var value = row[i];
