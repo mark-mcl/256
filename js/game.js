@@ -16,15 +16,6 @@ function transpose(matrix){
     return(newMatrix);
 };
 
-Game.prototype.moveLeft = function() {
-  for (var row of this.boardArray) {
-    console.log(row);
-    for ( var i= 0; i < row.length; i++) {
-      row[i] = move_tile_left(row, i);
-    };
-  };
-};
-
 function move_tile_left(row, i) {
   if (row[i] == "0" && (i != 3)) {
     return move_tile_left(row, i+1);
@@ -33,6 +24,15 @@ function move_tile_left(row, i) {
     row[i] = "0";
     return value;
   }
+};
+
+Game.prototype.moveLeft = function() {
+  for (var row of this.boardArray) {
+    console.log(row);
+    for ( var i= 0; i < row.length; i++) {
+      row[i] = move_tile_left(row, i);
+    };
+  };
 };
 
 Game.prototype.mergeLeft = function() {
@@ -56,17 +56,10 @@ Game.prototype.mergeLeft = function() {
 };
 };
 
-
-
-
-Game.prototype.moveRight = function() {
-  for (var row of this.boardArray) {
-    console.log(row);
-    for ( var i= row.length-1; i > 0; i--) {
-      row[i] = move_tile_right(row, i);
-    };
-  };
-};
+Game.prototype.moveMergeLeft = function() {
+  this.moveLeft();
+  this.mergeLeft();
+}
 
 function move_tile_right(row, i) {
   if (row[i] == "0" && (i != 0)) {
@@ -76,6 +69,15 @@ function move_tile_right(row, i) {
     row[i] = "0";
     return value;
   }
+};
+
+Game.prototype.moveRight = function() {
+  for (var row of this.boardArray) {
+    console.log(row);
+    for ( var i= row.length-1; i > 0; i--) {
+      row[i] = move_tile_right(row, i);
+    };
+  };
 };
 
 Game.prototype.mergeRight = function() {
@@ -100,6 +102,12 @@ Game.prototype.mergeRight = function() {
 };
 };
 
+
+Game.prototype.moveMergeRight = function() {
+  this.moveRight();
+  this.mergeRight();
+}
+
 Game.prototype.moveDown = function() {
   this.boardArray = transpose(this.boardArray);
   this.moveRight();
@@ -112,6 +120,12 @@ Game.prototype.mergeDown = function() {
   this.boardArray = transpose(this.boardArray);
 };
 
+
+Game.prototype.moveMergeDown = function() {
+  this.moveDown();
+  this.mergeDown();
+}
+
 Game.prototype.moveUp = function() {
   this.boardArray = transpose(this.boardArray);
   this.moveLeft();
@@ -123,4 +137,10 @@ Game.prototype.mergeUp = function() {
   this.mergeLeft();
   this.boardArray = transpose(this.boardArray);
 };
+
+
+Game.prototype.moveMergeUp = function() {
+  this.moveUp();
+  this.mergeUp();
+}
 
